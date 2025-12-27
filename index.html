@@ -2,24 +2,36 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Bird Rescue Team</title>
+<title>Save Birds Army | Bird Rescue Team</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     margin: 0;
-    background: #f4fff4;
+    background: linear-gradient(180deg,#e8fff1,#f4fbff);
 }
 header{
-    background: #1b5e20;
+    background: linear-gradient(135deg,#1b5e20,#1e88e5);
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 25px 15px;
 }
 header img{
-    max-width: 110px;
-    margin-bottom: 10px;
+    max-width: 90px;
+    margin-bottom: 8px;
+}
+header h1{
+    margin: 5px 0;
+    letter-spacing: 1px;
+}
+header .location{
+    font-size: 14px;
+    opacity: 0.9;
+}
+header .tagline{
+    font-size: 15px;
+    margin-top: 4px;
 }
 section{
     padding: 20px;
@@ -27,72 +39,71 @@ section{
 .card{
     background: white;
     margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 22px;
+    border-radius: 14px;
     max-width: 600px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 h2{
     color: #1b5e20;
     text-align: center;
+    margin-bottom: 10px;
 }
 .call-btn{
     display: block;
     text-align: center;
-    background: #d32f2f;
+    background: linear-gradient(135deg,#e53935,#d32f2f);
     color: white;
-    padding: 15px;
+    padding: 16px;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 18px;
-    margin: 15px 0;
+    margin-top: 15px;
+    font-weight: bold;
 }
 label{
-    font-weight: bold;
-    margin-top: 10px;
+    font-weight: 600;
+    margin-top: 12px;
     display: block;
 }
-input, textarea{
+input, select, textarea{
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 6px;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid #ccc;
+    font-size: 15px;
 }
 button{
     width: 100%;
-    padding: 14px;
-    margin-top: 12px;
+    padding: 15px;
+    margin-top: 14px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
+    font-weight: bold;
 }
 .loc-btn{
-    background: #1565c0;
+    background: linear-gradient(135deg,#1976d2,#1565c0);
     color: white;
 }
 .send-btn{
-    background: #2e7d32;
+    background: linear-gradient(135deg,#2e7d32,#1b5e20);
     color: white;
-}
-footer{
-    background: #1b5e20;
-    color: white;
-    text-align: center;
-    padding: 12px;
-    margin-top: 20px;
-    font-size: 14px;
 }
 .note{
     font-size: 13px;
     color: #555;
     text-align: center;
+    margin-top: 8px;
 }
-.map{
-    width: 100%;
-    height: 250px;
-    border: 0;
-    margin-top: 10px;
+footer{
+    background: #1b5e20;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    font-size: 14px;
 }
 </style>
 </head>
@@ -100,16 +111,17 @@ footer{
 <body>
 
 <header>
-<img src="logo.png" alt="Bird Rescue Logo">
-<h1>BIRD RESCUE TEAM</h1>
-<p>Save Life • Save Birds</p>
+<img src="logo.png" alt="Save Birds Logo">
+<h1>SAVE BIRDS ARMY</h1>
+<div class="location">Vinay Nagar, Mira Road</div>
+<div class="tagline">Saving Birds • Saving Lives 🐦</div>
 </header>
 
 <section>
 <div class="card">
-<h2>🐦 Found an Injured Bird?</h2>
-<p style="text-align:center;">Call us immediately. Our rescuer will reach you.</p>
-<a class="call-btn" href="tel:+917400421024">📞 CALL FOR RESCUE</a>
+<h2>🐦 Found a Bird in Trouble?</h2>
+<p style="text-align:center;">Call us immediately for fast rescue support.</p>
+<a class="call-btn" href="tel:+917400421024">📞 CALL FOR BIRD RESCUE</a>
 </div>
 </section>
 
@@ -118,17 +130,31 @@ footer{
 <h2>Request Bird Rescue</h2>
 
 <form onsubmit="sendWhatsApp(event)">
+
 <label>Your Name</label>
-<input id="name" required placeholder="Your name">
+<input id="name" required placeholder="Enter your name">
 
 <label>Your Phone Number</label>
-<input id="phone" required placeholder="Your phone number">
+<input id="phone" required placeholder="Enter your phone number">
 
 <label>Location / Landmark</label>
-<input id="location" required placeholder="Nearby area / landmark">
+<input id="location" required placeholder="Nearby area or landmark">
+
+<label>Bird</label>
+<select id="birdType" required>
+<option value="">Select Bird</option>
+<option>Pigeon</option>
+<option>Crow</option>
+<option>Wild Bird</option>
+</select>
 
 <label>Bird Condition</label>
-<textarea id="condition" rows="4" placeholder="Injured / trapped / fallen baby bird"></textarea>
+<select id="condition" required>
+<option value="">Select Condition</option>
+<option>Injured</option>
+<option>Trapped on Height</option>
+<option>Baby Bird</option>
+</select>
 
 <input type="hidden" id="liveLocation">
 
@@ -137,26 +163,14 @@ footer{
 </button>
 
 <button type="submit" class="send-btn">
-Send Request on WhatsApp
+Send Rescue Request on WhatsApp
 </button>
 
 <p class="note">
-Please allow location permission for faster rescue.
+Please allow location access for quicker rescue response.
 </p>
+
 </form>
-</div>
-</section>
-
-<section>
-<div class="card">
-<h2>Rescue Tracking</h2>
-<p style="text-align:center;">After your call, we will share a live tracking link.</p>
-
-<iframe class="map"
-src="https://www.google.com/maps?q=19.0176,72.8562&z=14&output=embed">
-</iframe>
-
-<p class="note">Tracking example shown above</p>
 </div>
 </section>
 
@@ -179,8 +193,6 @@ function getLocation(){
                 alert("Location permission denied ❌");
             }
         );
-    } else {
-        alert("Geolocation not supported");
     }
 }
 
@@ -190,6 +202,7 @@ function sendWhatsApp(e){
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
     const location = document.getElementById("location").value;
+    const bird = document.getElementById("birdType").value;
     const condition = document.getElementById("condition").value;
     const liveLoc = document.getElementById("liveLocation").value || "Not shared";
 
@@ -198,6 +211,7 @@ function sendWhatsApp(e){
 Name: ${name}
 Phone: ${phone}
 Location: ${location}
+Bird: ${bird}
 Condition: ${condition}
 Live Location: ${liveLoc}`;
 
