@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bird Rescue Team</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4fff4;
+}
+header{
+    background: #1b5e20;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+header img{
+    max-width: 110px;
+    margin-bottom: 10px;
+}
+section{
+    padding: 20px;
+}
+.card{
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+}
+h2{
+    color: #1b5e20;
+    text-align: center;
+}
+.call-btn{
+    display: block;
+    text-align: center;
+    background: #d32f2f;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 18px;
+    margin: 15px 0;
+}
+label{
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+input, textarea{
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+button{
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.loc-btn{
+    background: #1565c0;
+    color: white;
+}
+.send-btn{
+    background: #2e7d32;
+    color: white;
+}
+footer{
+    background: #1b5e20;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+.note{
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+}
+.map{
+    width: 100%;
+    height: 250px;
+    border: 0;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="logo.png" alt="Bird Rescue Logo">
+<h1>BIRD RESCUE TEAM</h1>
+<p>Save Life • Save Birds</p>
+</header>
+
+<section>
+<div class="card">
+<h2>🐦 Found an Injured Bird?</h2>
+<p style="text-align:center;">Call us immediately. Our rescuer will reach you.</p>
+<a class="call-btn" href="tel:+917400421024">📞 CALL FOR RESCUE</a>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>Request Bird Rescue</h2>
+
+<form onsubmit="sendWhatsApp(event)">
+<label>Your Name</label>
+<input id="name" required placeholder="Your name">
+
+<label>Your Phone Number</label>
+<input id="phone" required placeholder="Your phone number">
+
+<label>Location / Landmark</label>
+<input id="location" required placeholder="Nearby area / landmark">
+
+<label>Bird Condition</label>
+<textarea id="condition" rows="4" placeholder="Injured / trapped / fallen baby bird"></textarea>
+
+<input type="hidden" id="liveLocation">
+
+<button type="button" class="loc-btn" onclick="getLocation()">
+📍 Share Live Location
+</button>
+
+<button type="submit" class="send-btn">
+Send Request on WhatsApp
+</button>
+
+<p class="note">
+Please allow location permission for faster rescue.
+</p>
+</form>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>Rescue Tracking</h2>
+<p style="text-align:center;">After your call, we will share a live tracking link.</p>
+
+<iframe class="map"
+src="https://www.google.com/maps?q=19.0176,72.8562&z=14&output=embed">
+</iframe>
+
+<p class="note">Tracking example shown above</p>
+</div>
+</section>
+
+<footer>
+#SaveBirdsArmy • Bird Rescue Team © 2025
+</footer>
+
+<script>
+function getLocation(){
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(
+            function(pos){
+                const lat = pos.coords.latitude;
+                const lon = pos.coords.longitude;
+                document.getElementById("liveLocation").value =
+                    "https://maps.google.com/?q=" + lat + "," + lon;
+                alert("Live location added successfully ✅");
+            },
+            function(){
+                alert("Location permission denied ❌");
+            }
+        );
+    } else {
+        alert("Geolocation not supported");
+    }
+}
+
+function sendWhatsApp(e){
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const location = document.getElementById("location").value;
+    const condition = document.getElementById("condition").value;
+    const liveLoc = document.getElementById("liveLocation").value || "Not shared";
+
+    const msg =
+`Bird Rescue Request 🐦
+Name: ${name}
+Phone: ${phone}
+Location: ${location}
+Condition: ${condition}
+Live Location: ${liveLoc}`;
+
+    window.open(
+        "https://wa.me/917400421024?text=" + encodeURIComponent(msg),
+        "_blank"
+    );
+}
+</script>
+
+</body>
+</html>
