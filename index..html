@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Save Birds Army | Bird Rescue Team</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(180deg,#e8fff1,#f4fbff);
+}
+header{
+    background: linear-gradient(135deg,#1b5e20,#1e88e5);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+header img{
+    max-width: 90px;
+    margin-bottom: 8px;
+}
+header h1{
+    margin: 5px 0;
+    letter-spacing: 1px;
+}
+header .location{
+    font-size: 14px;
+    opacity: 0.9;
+}
+header .tagline{
+    font-size: 15px;
+    margin-top: 4px;
+}
+section{
+    padding: 20px;
+}
+.card{
+    background: white;
+    margin: 20px auto;
+    padding: 22px;
+    border-radius: 14px;
+    max-width: 600px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+h2{
+    color: #1b5e20;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.call-btn{
+    display: block;
+    text-align: center;
+    background: linear-gradient(135deg,#e53935,#d32f2f);
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+label{
+    font-weight: 600;
+    margin-top: 12px;
+    display: block;
+}
+input, select, textarea{
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+button{
+    width: 100%;
+    padding: 15px;
+    margin-top: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.loc-btn{
+    background: linear-gradient(135deg,#1976d2,#1565c0);
+    color: white;
+}
+.send-btn{
+    background: linear-gradient(135deg,#2e7d32,#1b5e20);
+    color: white;
+}
+.note{
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+    margin-top: 8px;
+}
+footer{
+    background: #1b5e20;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="logo.png" alt="Save Birds Logo">
+<h1>SAVE BIRDS ARMY</h1>
+<div class="location">Vinay Nagar, Mira Road</div>
+<div class="tagline">Saving Birds • Saving Lives 🐦</div>
+</header>
+
+<section>
+<div class="card">
+<h2>🐦 Found a Bird in Trouble?</h2>
+<p style="text-align:center;">Call us immediately for fast rescue support.</p>
+<a class="call-btn" href="tel:+917400421024">📞 CALL FOR BIRD RESCUE</a>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>Request Bird Rescue</h2>
+
+<form onsubmit="sendWhatsApp(event)">
+
+<label>Your Name</label>
+<input id="name" required placeholder="Enter your name">
+
+<label>Your Phone Number</label>
+<input id="phone" required placeholder="Enter your phone number">
+
+<label>Location / Landmark</label>
+<input id="location" required placeholder="Nearby area or landmark">
+
+<label>Bird</label>
+<select id="birdType" required>
+<option value="">Select Bird</option>
+<option>Pigeon</option>
+<option>Crow</option>
+<option>Wild Bird</option>
+</select>
+
+<label>Bird Condition</label>
+<select id="condition" required>
+<option value="">Select Condition</option>
+<option>Injured</option>
+<option>Trapped on Height</option>
+<option>Baby Bird</option>
+</select>
+
+<input type="hidden" id="liveLocation">
+
+<button type="button" class="loc-btn" onclick="getLocation()">
+📍 Share Live Location
+</button>
+
+<button type="submit" class="send-btn">
+Send Rescue Request on WhatsApp
+</button>
+
+<p class="note">
+Please allow location access for quicker rescue response.
+</p>
+
+</form>
+</div>
+</section>
+
+<footer>
+#SaveBirdsArmy • Bird Rescue Team © 2025
+</footer>
+
+<script>
+function getLocation(){
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(
+            function(pos){
+                const lat = pos.coords.latitude;
+                const lon = pos.coords.longitude;
+                document.getElementById("liveLocation").value =
+                    "https://maps.google.com/?q=" + lat + "," + lon;
+                alert("Live location added successfully ✅");
+            },
+            function(){
+                alert("Location permission denied ❌");
+            }
+        );
+    }
+}
+
+function sendWhatsApp(e){
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const location = document.getElementById("location").value;
+    const bird = document.getElementById("birdType").value;
+    const condition = document.getElementById("condition").value;
+    const liveLoc = document.getElementById("liveLocation").value || "Not shared";
+
+    const msg =
+`Bird Rescue Request 🐦
+Name: ${name}
+Phone: ${phone}
+Location: ${location}
+Bird: ${bird}
+Condition: ${condition}
+Live Location: ${liveLoc}`;
+
+    window.open(
+        "https://wa.me/917400421024?text=" + encodeURIComponent(msg),
+        "_blank"
+    );
+}
+</script>
+
+</body>
+</html>
