@@ -2,36 +2,46 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Save Birds Army | Bird Rescue Team</title>
+<title>Udaan Bird Camp | Bird Rescue</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
     font-family: "Segoe UI", Arial, sans-serif;
     margin: 0;
-    background: linear-gradient(180deg,#e8fff1,#f4fbff);
+    background: linear-gradient(180deg,#f4fff8,#eef7ff);
 }
 header{
-    background: linear-gradient(135deg,#1b5e20,#1e88e5);
+    background: linear-gradient(135deg,#1b5e20,#2e7d32);
     color: white;
     text-align: center;
-    padding: 25px 15px;
+    padding: 30px 15px;
 }
 header img{
-    max-width: 90px;
-    margin-bottom: 8px;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    background: white;
 }
 header h1{
     margin: 5px 0;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+}
+header .dates{
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 6px;
 }
 header .location{
     font-size: 14px;
-    opacity: 0.9;
+    margin-top: 4px;
+    opacity: 0.95;
 }
 header .tagline{
-    font-size: 15px;
-    margin-top: 4px;
+    font-size: 14px;
+    opacity: 0.95;
 }
 section{
     padding: 20px;
@@ -39,53 +49,54 @@ section{
 .card{
     background: white;
     margin: 20px auto;
-    padding: 22px;
-    border-radius: 14px;
-    max-width: 600px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    padding: 24px;
+    border-radius: 16px;
+    max-width: 620px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
 }
 h2{
     color: #1b5e20;
     text-align: center;
-    margin-bottom: 10px;
 }
 .call-btn{
     display: block;
     text-align: center;
-    background: linear-gradient(135deg,#e53935,#d32f2f);
+    background: linear-gradient(135deg,#e53935,#c62828);
     color: white;
     padding: 16px;
     text-decoration: none;
-    border-radius: 10px;
-    font-size: 18px;
-    margin-top: 15px;
+    border-radius: 12px;
+    font-size: 17px;
+    margin-top: 12px;
     font-weight: bold;
+}
+.call-btn.alt{
+    background: linear-gradient(135deg,#1565c0,#0d47a1);
 }
 label{
     font-weight: 600;
     margin-top: 12px;
     display: block;
 }
-input, select, textarea{
+input, select{
     width: 100%;
     padding: 12px;
     margin-top: 6px;
     border-radius: 8px;
     border: 1px solid #ccc;
-    font-size: 15px;
 }
 button{
     width: 100%;
     padding: 15px;
     margin-top: 14px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 16px;
     cursor: pointer;
     font-weight: bold;
 }
 .loc-btn{
-    background: linear-gradient(135deg,#1976d2,#1565c0);
+    background: linear-gradient(135deg,#1976d2,#0d47a1);
     color: white;
 }
 .send-btn{
@@ -94,16 +105,35 @@ button{
 }
 .note{
     font-size: 13px;
-    color: #555;
+    color: #444;
     text-align: center;
-    margin-top: 8px;
+    margin-top: 10px;
+}
+.secure{
+    text-align: center;
+    font-size: 13px;
+    color: #2e7d32;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.thankyou{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #1b5e20;
 }
 footer{
     background: #1b5e20;
     color: white;
     text-align: center;
-    padding: 14px;
+    padding: 16px;
     font-size: 14px;
+}
+footer a{
+    color: #c8e6c9;
+    text-decoration: none;
+    font-weight: 600;
 }
 </style>
 </head>
@@ -111,9 +141,10 @@ footer{
 <body>
 
 <header>
-<img src="logo.png" alt="Save Birds Logo">
-<h1>SAVE BIRDS ARMY</h1>
-<div class="location">Vinay Nagar, Mira Road</div>
+<img src="udaan camp logo.jpeg" alt="Udaan Bird Camp Logo">
+<h1>UDAAN BIRD CAMP</h1>
+<div class="dates">📅 16 • 17 • 18 January 2026</div>
+<div class="location">📍 Vinay Nagar</div>
 <div class="tagline">Saving Birds • Saving Lives 🐦</div>
 </header>
 
@@ -121,7 +152,11 @@ footer{
 <div class="card">
 <h2>🐦 Found a Bird in Trouble?</h2>
 <p style="text-align:center;">Call us immediately for fast rescue support.</p>
-<a class="call-btn" href="tel:+917400421024">📞 CALL FOR BIRD RESCUE</a>
+
+<a class="call-btn" href="tel:+917400421024">📞 Call: 7400421024</a>
+<a class="call-btn alt" href="tel:+919321621286">📞 Call: 9321621286</a>
+
+<p class="secure">🔐 Your data is encrypted & safe</p>
 </div>
 </section>
 
@@ -158,66 +193,52 @@ footer{
 
 <input type="hidden" id="liveLocation">
 
-<button type="button" class="loc-btn" onclick="getLocation()">
-📍 Share Live Location
-</button>
+<button type="button" class="loc-btn" onclick="getLocation()">📍 Share Live Location</button>
+<button type="submit" class="send-btn">Send Request on WhatsApp</button>
 
-<button type="submit" class="send-btn">
-Send Rescue Request on WhatsApp
-</button>
-
-<p class="note">
-Please allow location access for quicker rescue response.
-</p>
+<p class="note">Please allow location access for quicker rescue.</p>
+<p class="thankyou">❤️ Thanks for saving the life of an innocent</p>
 
 </form>
 </div>
 </section>
 
 <footer>
-#SaveBirdsArmy • Bird Rescue Team © 2025
+Follow us on Instagram 👉 
+<a href="https://www.instagram.com/udaanbirdcamp?igsh=aGpxbHpjZ3Bpdml3" target="_blank">
+@udaanbirdcamp
+</a>
 </footer>
 
 <script>
 function getLocation(){
-    if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(
-            function(pos){
-                const lat = pos.coords.latitude;
-                const lon = pos.coords.longitude;
-                document.getElementById("liveLocation").value =
-                    "https://maps.google.com/?q=" + lat + "," + lon;
-                alert("Live location added successfully ✅");
-            },
-            function(){
-                alert("Location permission denied ❌");
-            }
-        );
-    }
+    navigator.geolocation.getCurrentPosition(
+        function(pos){
+            document.getElementById("liveLocation").value =
+            "https://maps.google.com/?q=" + pos.coords.latitude + "," + pos.coords.longitude;
+            alert("Live location added ✅");
+        },
+        function(){
+            alert("Location permission denied ❌");
+        }
+    );
 }
 
 function sendWhatsApp(e){
     e.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const location = document.getElementById("location").value;
-    const bird = document.getElementById("birdType").value;
-    const condition = document.getElementById("condition").value;
-    const liveLoc = document.getElementById("liveLocation").value || "Not shared";
-
     const msg =
 `Bird Rescue Request 🐦
-Name: ${name}
-Phone: ${phone}
-Location: ${location}
-Bird: ${bird}
-Condition: ${condition}
-Live Location: ${liveLoc}`;
+Name: ${name.value}
+Phone: ${phone.value}
+Location: ${location.value}
+Bird: ${birdType.value}
+Condition: ${condition.value}
+Live Location: ${liveLocation.value || "Not shared"}`;
 
     window.open(
-        "https://wa.me/917400421024?text=" + encodeURIComponent(msg),
-        "_blank"
+      "https://wa.me/917400421024?text=" + encodeURIComponent(msg),
+      "_blank"
     );
 }
 </script>
